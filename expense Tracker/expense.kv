@@ -1,0 +1,999 @@
+#: import  hex_color kivy.utils.get_color_from_hex
+
+MDScreenManager:
+    ExpenseScreen:
+    AddTransaction:
+    Transactions:
+    SettingsScreen:
+
+
+
+<ExpenseScreen>:
+    name:'expense'
+    md_bg_color:hex_color('#F8F8F8')
+    MDBoxLayout:
+        spacing:dp(10)
+        padding:dp(10)
+        orientation: "vertical"
+        size_hint_y: None
+        height: self.minimum_height
+        pos_hint: {"top": 1}
+
+        MDTopAppBar:
+            type:"small"
+            theme_bg_color:"Custom"
+            md_bg_color:hex_color('#F8F8F8')
+            pos_hint:{'top':1}
+
+
+
+
+
+            MDTopAppBarTitle:
+                text:'Expense Tracker'
+                style:'display'
+                role:'large'
+                theme_text_color:"Custom"
+                text_color:hex_color('#4c4f52')
+                bold:True
+
+            MDTopAppBarTrailingButtonContainer:
+
+                MDActionTopAppBarButton:
+                    icon:'menu'
+                    theme_font_size: 'Custom'
+                    font_size:'35dp'
+                    size_hint:None, None
+                    size:"25dp", "25dp"
+                    text_color:hex_color('#a4a4a4')
+                    theme_bg_color:'Custom'
+                    on_release: root.open_menu(self)
+        MDGridLayout:
+            adaptive_size:True
+            cols: 1
+            rows:4
+            padding: dp(10)
+            spacing: dp(20)
+            size_hint_y: None
+            height: self.minimum_height
+            size_hint_x: 1  # Full width
+            MDBoxLayout:
+                orientation:'vertical'
+
+                elevation: 4
+                pos_hint: {"top": 1}
+                radius: dp(20)
+
+                theme_bg_color:"Custom"
+                md_bg_color:hex_color('#ffffff')
+                spacing:dp(5)
+                padding:dp(15), dp(5), dp(5), dp(5)
+                size_hint_y: None
+                height: self.minimum_height
+
+                MDLabel:
+                    text: "Balance"
+                    halign: "left"
+                    valign: "top"
+                    size_hint_y: None
+                    theme_text_color:"Custom"
+                    text_color:hex_color('#4c4f52')
+                    height: self.texture_size[1]
+                MDLabel:
+                    text: "$ 1,200,000.00"
+                    font_style:'Headline'
+                    role:'medium'
+                    bold:True
+                    halign: "left"
+                    valign: "top"
+                    theme_text_color:"Custom"
+                    theme_font_name:'Custom'
+                    font_name:'fonts/Poppins-SemiBold.ttf'
+                    text_color:hex_color('#11790f')
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+
+
+
+            MDGridLayout:
+                adaptive_size:True
+                cols: 2
+                rows:1
+                padding: dp(10)
+                spacing: dp(20)
+                size_hint_y: None
+                height: self.minimum_height
+                pos_hint: {"top": 1}
+                size_hint_x: 1
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: 80  # Auto adjust to fit content
+                    radius: dp(20)
+                    elevation: 8
+                    theme_bg_color: "Custom"
+                    md_bg_color: hex_color('#ffffff')
+                    spacing: dp(5)
+                    padding: dp(15), dp(10), dp(10), dp(10)
+
+                    MDLabel:
+                        text: "Total Income"
+                        font_style:'Title'
+                        role:'medium'
+                        halign: "left"
+                        valign: "top"
+                        theme_text_color:"Custom"
+                        text_color:hex_color('#4c4f52')
+                    MDLabel:
+                        adaptive_size:True
+                        text: "$ 2,500,000"
+                        font_style:'Title'
+                        role:'medium'
+                        halign: "left"
+                        valign: "top"
+                        theme_text_color:"Custom"
+                        bold:True
+                        theme_font_name:'Custom'
+                        font_name:'fonts/Poppins-SemiBold.ttf'
+                        text_color:hex_color('#2a2b2a')
+
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: 80  # Auto adjust to fit content
+                    radius: dp(20)
+                    elevation: 8
+                    theme_bg_color: "Custom"
+                    md_bg_color: hex_color('#ffffff')
+                    spacing: dp(5)
+                    padding: dp(15), dp(10), dp(10), dp(10)
+                    MDLabel:
+                        text: "Total Expense"
+                        font_style:'Title'
+                        role:'medium'
+                        halign: "left"
+                        valign: "top"
+                        theme_text_color:"Custom"
+                        text_color:hex_color('#4c4f52')
+                    MDLabel:
+                        adaptive_size:True
+                        text: "$ 1,300,000"
+                        font_style:'Title'
+                        role:'medium'
+                        halign: "left"
+                        valign: "top"
+                        theme_text_color:"Custom"
+                        bold:True
+                        theme_font_name:'Custom'
+                        font_name:'fonts/Poppins-SemiBold.ttf'
+                        text_color:hex_color('#2a2b2a')
+            MDBoxLayout:
+
+                orientation:'vertical'
+                size_hint_y: None
+                height: dp(200)
+                elevation: 4
+                pos_hint: {"top": 1}
+                radius: dp(20)
+                elevation: 8
+                theme_bg_color:"Custom"
+                md_bg_color:hex_color('#ffffff')
+                spacing:dp(5)
+                padding:dp(15), dp(5), dp(5), dp(5)
+                pos_hint:{"center_x":0.5, 'center_y':0.5}
+                Image:
+                    source:'monthly_spending_chart.png'
+                    allow_stretch:True
+                    keep_ratio:True
+                    size_hint:(1, 1)
+
+                    pos_hint:{"center_x":0.5, 'center_y':0.5}
+
+            MDButton:
+                id:login_button
+                style:'filled'
+                theme_width:"Custom"
+                radius:dp(10)
+                size_hint_x:1
+
+                padding:dp(5), dp(5), dp(5), dp(5)
+                theme_bg_color:'Custom'
+                md_bg_color:hex_color('#143b5c')
+
+
+                MDButtonText:
+                    halign:'center'
+                    pos_hint: {"center_x": 0.5, "center_y":0.5}
+                    font_weight:'bold'
+                    text: "Add Transaction"
+                    theme_font_name:'Custom'
+                    font_name: "fonts/Poppins-bold.ttf"
+
+
+<AddTransaction>:
+    name:'addtransaction'
+    md_bg_color:hex_color('#F8F8F8')
+    MDBoxLayout:
+        spacing:dp(10)
+        padding:dp(10)
+        orientation: "vertical"
+        size_hint_y: None
+        height: self.minimum_height
+        pos_hint: {"top": 1}
+
+        MDTopAppBar:
+            type:"small"
+            theme_bg_color:"Custom"
+            md_bg_color:hex_color('#F8F8F8')
+            pos_hint:{'top':1}
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon:'arrow-left'
+                    theme_font_size: 'Custom'
+                    font_size:'20dp'
+                    size_hint:None, None
+                    size:"35dp", "35dp"
+                    theme_text_color:'Custom'
+                    text_color:hex_color('#06141f')
+                    on_release:root.go_back()
+
+            MDTopAppBarTitle:
+                text:'Add Transaction'
+                style:'display'
+                role:'large'
+                theme_text_color:"Custom"
+                text_color:hex_color('#4c4f52')
+                pos_hint: {"center_x": 0.5, "center_y":0.5}
+                bold:True
+        MDScrollView:
+            id: scroll_view
+            bar_width: dp(2)  # Scroll bar width
+            bar_color: 0, 0, 0, 0.5  # Scroll bar color (gray)
+            bar_inactive_color: 0, 0, 0, 0.2
+            scroll_type: ['bars', 'content']  # smooth bar and content scroll
+            smooth_scroll_end: 10
+            do_scroll_x: False
+            size_hint_y:None
+            height: root.height * 0.70
+            MDBoxLayout:
+                id:device
+                spacing:dp(5)
+                #padding:dp(1)
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+
+                MDLabel:
+                    text: "Amount"
+                    font_style:'Title'
+                    role:'medium'
+                    halign: "left"
+                    valign: "top"
+                    theme_text_color:"Custom"
+                    text_color:hex_color('#4c4f52')
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    theme_font_name:'Custom'
+                    font_name: "fonts/Poppins-bold.ttf"
+
+
+                MDBoxLayout:
+                    size_hint_x:1
+                    pos_hint:{'center_x':0.5, 'center_y':0.5}
+                    radius:dp(15)
+                    orientation:"vertical"
+                    size_hint_y: None
+                    height: self.minimum_height
+                    md_bg_color:hex_color('#ffffff')
+                    MDTextField:
+                        id:amount
+                        role:'medium'
+                        mode: "outlined"
+                        size_hint_x:1
+                        pos_hint:{'center_x':0.5, 'center_y':0.5}
+                        radius:[dp(10)]
+                        theme_text_color: "Custom"
+                        text_color_focus: hex_color('#4c4f52')
+                        theme_bg_color: "Custom"
+                        theme_line_color:"Custom"
+                        line_color_focus: hex_color('#777e84')
+                        line_color_normal: hex_color('#777e84')
+                        MDTextFieldHintText:
+                            text:'$'
+                            text_color_normal:hex_color('#4c4f52')
+                            text_color_focus:hex_color('#4c4f52')
+                            theme_font_name:'Custom'
+                            font_name: "fonts/Poppins-Light.ttf"
+
+                MDBoxLayout:
+                    spacing:dp(8)
+                    padding:dp(1), dp(30), dp(1), dp(1)
+                    size_hint_x:1
+                    pos_hint:{'center_x':0.5, 'center_y':0.5}
+                    radius:dp(15)
+                    orientation:"horizontal"
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                    MDCheckbox:
+                        pos_hint:{'center_x':0.5, 'center_y':0.5}
+                        group: "category"
+                        on_active: if self.active: print("Expense selected")
+                        color_active: hex_color('#143b5c')
+                        color_inactive:hex_color('#b4c3d0')
+
+
+
+                    MDLabel:
+                        pos_hint:{'center_x':0.5, 'center_y':0.5}
+                        text: "Income"
+                        theme_font_name:'Custom'
+                        font_name: "fonts/Poppins-Medium.ttf"
+                MDBoxLayout:
+                    spacing:dp(8)
+                    padding:dp(1), dp(15), dp(1), dp(1)
+                    size_hint_x:1
+                    pos_hint:{'center_x':0.5, 'center_y':0.5}
+                    radius:dp(15)
+                    orientation:"horizontal"
+                    size_hint_y: None
+                    height: self.minimum_height
+
+
+                    MDCheckbox:
+                        pos_hint:{'center_x':0.5, 'center_y':0.5}
+                        group: "category"
+                        on_active: if self.active: print("Expense selected")
+                        color_active: hex_color('#143b5c')
+                        color_inactive:hex_color('#b4c3d0')
+
+                    MDLabel:
+                        pos_hint:{'center_x':0.5, 'center_y':0.5}
+                        text: "Expense"
+                        theme_font_name:'Custom'
+                        font_name: "fonts/Poppins-Medium.ttf"
+
+
+
+                MDBoxLayout:
+                    spacing:dp(10)
+                    padding:dp(1), dp(30), dp(1), dp(1)
+                    size_hint_x:1
+                    pos_hint:{'center_x':0.5, 'center_y':0.5}
+                    radius:dp(15)
+                    orientation:"vertical"
+                    size_hint_y: None
+                    height: self.minimum_height
+                    MDLabel:
+                        text: "Category"
+                        font_style:'Title'
+                        role:'medium'
+                        halign: "left"
+                        valign: "top"
+                        theme_text_color:"Custom"
+                        text_color:hex_color('#4c4f52')
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        theme_font_name:'Custom'
+                        font_name: "fonts/Poppins-bold.ttf"
+                    MDBoxLayout:
+                        size_hint_x:1
+                        pos_hint:{'center_x':0.5, 'center_y':0.5}
+                        radius:dp(15)
+                        orientation:"vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        md_bg_color:hex_color('#ffffff')
+                        MDTextField:
+                            id: category_field
+                            hint_text: "Select category"
+                            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                            size_hint_x: 1
+                            role:'medium'
+                            mode: "outlined"
+                            readonly: True  # Makes it behave like a dropdown
+                            radius:[dp(10)]
+                            theme_text_color: "Custom"
+                            text_color_focus: hex_color('#4c4f52')
+                            theme_bg_color: "Custom"
+                            theme_line_color:"Custom"
+                            line_color_focus: hex_color('#777e84')
+                            line_color_normal: hex_color('#777e84')
+                            theme_cursor_color:"Custom"
+
+                            on_focus:root.open_menu()
+
+                            MDTextFieldTrailingIcon:
+                                icon: "chevron-down"
+
+                MDBoxLayout:
+                    spacing:dp(10)
+                    padding:dp(1), dp(20), dp(1), dp(1)
+                    size_hint_x:1
+                    pos_hint:{'center_x':0.5, 'center_y':0.5}
+                    radius:dp(15)
+                    orientation:"vertical"
+                    size_hint_y: None
+                    height: self.minimum_height
+                    MDLabel:
+                        text: "Date"
+                        font_style:'Title'
+                        role:'medium'
+                        halign: "left"
+                        valign: "top"
+                        theme_text_color:"Custom"
+                        text_color:hex_color('#4c4f52')
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        theme_font_name:'Custom'
+                        font_name: "fonts/Poppins-bold.ttf"
+                    MDBoxLayout:
+                        size_hint_x:1
+                        pos_hint:{'center_x':0.5, 'center_y':0.5}
+                        radius:dp(15)
+                        orientation:"vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        md_bg_color:hex_color('#ffffff')
+                        MDTextField:
+
+                            id:date_field
+                            hint_text: "Select category"
+                            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                            size_hint_x: 1
+                            role:'medium'
+                            mode: "outlined"
+                            readonly: True  # Makes it behave like a dropdown
+                            radius:[dp(10)]
+                            theme_text_color: "Custom"
+                            text_color_focus: hex_color('#4c4f52')
+                            theme_bg_color: "Custom"
+                            theme_line_color:"Custom"
+                            line_color_focus: hex_color('#777e84')
+                            line_color_normal: hex_color('#777e84')
+                            theme_cursor_color:"Custom"
+
+                            on_focus:root.show_modal_date_picker()
+
+                            MDTextFieldTrailingIcon:
+                                icon: "calendar"
+
+                MDBoxLayout:
+                    spacing:dp(10)
+                    padding:dp(1), dp(20), dp(1), dp(1)
+                    size_hint_x:1
+                    pos_hint:{'center_x':0.5, 'center_y':0.5}
+                    radius:dp(15)
+                    orientation:"vertical"
+                    size_hint_y: None
+                    height: self.minimum_height
+                    MDLabel:
+                        text: "Note"
+                        font_style:'Title'
+                        role:'medium'
+                        halign: "left"
+                        valign: "top"
+                        theme_text_color:"Custom"
+                        text_color:hex_color('#4c4f52')
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        theme_font_name:'Custom'
+                        font_name: "fonts/Poppins-bold.ttf"
+                    MDBoxLayout:
+                        padding:dp(1), dp(5), dp(1), dp(15)
+                        size_hint_x:1
+                        pos_hint:{'center_x':0.5, 'center_y':0.5}
+                        radius:dp(15)
+                        orientation:"vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        md_bg_color:hex_color('#ffffff')
+                        MDTextField:
+                            id:note
+                            role:'medium'
+                            mode: "outlined"
+                            size_hint_x:1
+                            pos_hint:{'center_x':0.5, 'center_y':0.5}
+                            radius:[dp(10)]
+                            theme_text_color: "Custom"
+                            text_color_focus: hex_color('#4c4f52')
+                            theme_bg_color: "Custom"
+                            theme_line_color:"Custom"
+                            line_color_focus: hex_color('#777e84')
+                            line_color_normal: hex_color('#777e84')
+                            MDTextFieldHintText:
+                                text:'add  note'
+                                text_color_normal:hex_color('#4c4f52')
+                                text_color_focus:hex_color('#4c4f52')
+                                theme_font_name:'Custom'
+                                pos_hint:{'center_x':0.5, 'center_y':0.5}
+                                font_name: "fonts/Poppins-Light.ttf"
+                            MDTextFieldMaxLengthText:
+                                max_text_length: 15
+        MDBoxLayout:
+            size_hint_x:1
+            spacing:dp(10)
+            padding:dp(1), dp(20), dp(1), dp(10)
+            pos_hint:{'center_x':0.5, 'center_y':0.5}
+            radius:dp(15)
+            orientation:"vertical"
+            size_hint_y: None
+            height: self.minimum_height
+
+            MDButton:
+
+                style:'filled'
+                theme_width:"Custom"
+                radius:dp(10)
+                size_hint_x:1
+                size_hint_y:None
+                height:dp(50)
+                padding:dp(20)
+                theme_bg_color:'Custom'
+                md_bg_color:hex_color('#143b5c')
+
+
+                MDButtonText:
+                    halign:'center'
+                    pos_hint: {"center_x": 0.5, "center_y":0.5}
+                    font_weight:'bold'
+                    theme_font_size:'Custom'
+                    font_size:dp(18)
+                    text: "Save"
+                    theme_font_name:'Custom'
+                    font_name: "fonts/Poppins-bold.ttf"
+
+
+<MyCategory@MDListItem>:
+    orientation: "vertical"
+    size_hint_x: 1
+    size_hint_y: None
+    pos_hint: {"top": 1}
+    height: dp(80)
+    spacing: dp(10)
+    pos_hint: {"center_x": 0.5}
+    theme_bg_color:'Custom'
+    md_bg_color: hex_color('#ffffff')
+
+    MDLabel:
+        text: "2025-01-11"
+        font_style:'Title'
+        role:'small'
+        bold:True
+        halign: "left"
+        valign: "top"
+        size_hint_y: None
+        height: self.texture_size[1]
+        theme_text_color: "Custom"
+        text_color: hex_color('#9191ac')
+        font_name: "fonts/Poppins-Light.ttf"
+
+
+    # COFFEE & PRICE ROW
+    MDBoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: self.minimum_height
+        spacing: dp(5)
+        elevation: 2
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(8)
+            pos_hint: {'center_x':0.5 ,'center_y': 0.5}
+            MDIcon:
+                icon: "coffee-maker"
+                theme_width:'Custom'
+                theme_text_color: "Custom"
+                text_color: hex_color('#398f9b')
+                theme_bg_color:'Custom'
+                md_bg_color:hex_color('#ffffff')
+                radius:dp(20)
+                pos_hint: {'center_x':0.5 ,'center_y': 0.5}
+
+
+            MDLabel:
+                text: "coffee"
+                pos_hint: {'center_x':0.5 ,'center_y': 0.5}
+                theme_text_color: "Custom"
+                text_color: hex_color('#4c4f52')
+                theme_font_name: "Custom"
+                font_name: "fonts/Poppins-SemiBold.ttf"
+        # RIGHT TEXT (Price)
+        MDLabel:
+            text: "-$4.00"
+            halign: "right"
+            valign: "middle"
+            size_hint_x: 1
+            size_hint_y: None
+            height: self.texture_size[1]
+            theme_text_color: "Custom"
+            text_color: hex_color('#b75454')
+            theme_font_name: "Custom"
+            font_name: "fonts/Poppins-SemiBold.ttf"
+            bold:True
+    MDDivider:
+        height: dp(1)
+        color: hex_color('#e0e0e0')  # Customize the color as needed
+
+<MySalary@MDListItem>:
+    orientation: "vertical"
+    size_hint_x: 1
+    size_hint_y: None
+    pos_hint: {"top": 1}
+    height: dp(80)
+    spacing: dp(10)
+    pos_hint: {"center_x": 0.5}
+    theme_bg_color:'Custom'
+    md_bg_color: hex_color('#ffffff')
+
+    MDLabel:
+        text: "2025-01-01"
+        font_style:'Title'
+        role:'small'
+        bold:True
+        halign: "left"
+        valign: "top"
+        size_hint_y: None
+        height: self.texture_size[1]
+        theme_text_color: "Custom"
+        text_color: hex_color('#9191ac')
+        font_name: "fonts/Poppins-Light.ttf"
+
+
+    # SALARY & PRICE ROW
+    MDBoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: self.minimum_height
+        spacing: dp(5)
+        elevation: 2
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(8)
+            pos_hint: {'center_x':0.5 ,'center_y': 0.5}
+
+            MDIcon:
+                icon: "bank"
+                theme_text_color: "Custom"
+                text_color: hex_color('#398f9b')
+                theme_bg_color: 'Custom'
+                md_bg_color: hex_color('#ffffff')
+                radius: dp(20)
+                size_hint: None, None
+                size: dp(24), dp(24)
+                pos_hint: {'center_x':0.5 ,'center_y': 0.5}
+
+            MDLabel:
+                text: "Salary"
+
+                theme_text_color: "Custom"
+                text_color: hex_color('#212225')
+                theme_font_name: "Custom"
+                font_name: "fonts/Poppins-SemiBold.ttf"
+                size_hint_y: None
+                height: self.texture_size[1]
+                pos_hint: {'center_x':0.5 ,'center_y': 0.5}
+
+
+        # RIGHT TEXT (Price)
+        MDLabel:
+            text: "+$2000.00"
+            halign: "right"
+            valign: "middle"
+            size_hint_x: 1
+            size_hint_y: None
+            height: self.texture_size[1]
+            theme_text_color: "Custom"
+            text_color: hex_color('#238741')
+            theme_font_name: "Custom"
+            font_name: "fonts/Poppins-SemiBold.ttf"
+            bold:True
+    MDDivider:
+        height: dp(1)
+        color: hex_color('#e0e0e0')  # Customize the color as needed
+
+<Transactions>:
+    name:'transactions'
+    md_bg_color:hex_color('#143b5c')
+    MDBoxLayout:
+        spacing:dp(10)
+        padding:dp(5)
+        orientation: "vertical"
+        size_hint_y: 1
+
+        pos_hint: {"top": 1}
+
+        MDTopAppBar:
+            type:"small"
+            theme_bg_color:"Custom"
+
+            md_bg_color:hex_color('#143b5c')
+            pos_hint:{'top':1}
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon:'arrow-left'
+                    theme_font_size: 'Custom'
+                    font_size:'20dp'
+                    size_hint:None, None
+                    size:"35dp", "35dp"
+                    theme_text_color:'Custom'
+                    text_color:hex_color('#3aa4a4')
+                    on_release:root.go_back()
+
+            MDTopAppBarTitle:
+                text:'Transactions'
+                style:'display'
+                role:'large'
+                theme_text_color:"Custom"
+                text_color:hex_color('#ffffff')
+                pos_hint: {"center_x": 0.5, "center_y":0.5}
+                bold:True
+                theme_font_name:'Custom'
+                font_name: "fonts/Poppins-bold.ttf"
+
+        MDBoxLayout:
+            size_hint_x:1
+            spacing:dp(10)
+            pos_hint:{'center_x':0.5, 'center_y':0.5}
+            orientation:"vertical"
+            size_hint_y: None
+            height: self.minimum_height
+
+            MDBoxLayout:
+                size_hint_x:1
+                pos_hint:{'center_x':0.5, 'center_y':0.5}
+                radius:dp(15)
+                orientation:"vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                md_bg_color:hex_color('#ffffff')
+                MDTextField:
+                    id:note
+                    role:'medium'
+                    mode: "outlined"
+                    size_hint_x:1
+                    pos_hint:{'center_x':0.5, 'center_y':0.5}
+                    radius:dp(15)
+                    theme_text_color: "Custom"
+                    text_color_focus: hex_color('#4c4f52')
+                    theme_bg_color: "Custom"
+                    theme_line_color:"Custom"
+                    line_color_focus: hex_color('#3aa4a4')
+                    line_color_normal: hex_color('#777e84')
+                    MDTextFieldHintText:
+                        text:'Search Transactions'
+                        text_color_normal:hex_color('#4c4f52')
+                        text_color_focus:hex_color('#ffffff')
+                        theme_font_name:'Custom'
+                        pos_hint:{'center_x':0.5, 'center_y':0.5}
+                        font_name: "fonts/Poppins-Light.ttf"
+
+        MDBoxLayout:
+            size_hint_x: 1
+            size_hint_y: 1  # 👈 let it expand naturally
+            orientation: "vertical"
+            md_bg_color: hex_color('#ffffff')
+            radius: dp(15)
+            theme_line_color:"Custom"
+            line_color_focus: hex_color('#3aa4a4')
+            line_color_normal: hex_color('#fc4343')
+            ScrollView:
+                id: scroll_view
+                bar_width: dp(2)  # Scroll bar width
+                bar_color: 0, 0, 0, 0.5  # Scroll bar color (gray)
+                bar_inactive_color: 0, 0, 0, 0.2
+                scroll_type: ['bars', 'content']  # smooth bar and content scroll
+                smooth_scroll_end: 10
+                do_scroll_x: False
+                MDList:
+                    size_hint_x: 1
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                    md_bg_color: hex_color('#ffffff')
+                    MySalary:
+                    MyCategory:
+                    MyCategory:
+                    MyCategory:
+                    MyCategory:
+
+
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(60)
+            padding: dp(20)
+            spacing: dp(10)
+            md_bg_color: hex_color("#ffffff")
+            MDButton:
+                style:"outlined"
+                pos_hint:{'center':0.5, 'center_y':0.5}
+                theme_width:'Custom'
+                size_hint_x:1
+                MDButtonText:
+                    text:"Filter by Date"
+                    pos_hint:{'center_x':0.5, 'center_y':0.5}
+                    theme_text_color:'Custom'
+                    text_color:hex_color('#4c4f52')
+                    theme_font_name:'Custom'
+                    font_name: "fonts/Poppins-Bold.ttf"
+
+    MDFloatLayout:
+        id: loader_overlay
+        size_hint: 1, 1
+        md_bg_color: [0, 0, 0, 0.5]  # Semi-transparent overlay
+        opacity: 0 # Hidden initially
+        disabled: False  # Disable interaction when hidden
+
+        MDCard:
+            size_hint: None, None
+            size: "100dp", "100dp"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            radius: [20,]
+            elevation: 5
+
+            MDFloatLayout:
+                MDCircularProgressIndicator:
+                    size_hint: None, None
+                    size: "48dp", "48dp"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    active: True
+
+
+<SettingsScreen>:
+    name:'settings'
+    md_bg_color:hex_color('#143b5c')
+    MDBoxLayout:
+        spacing:dp(10)
+        padding:dp(5)
+        orientation: "vertical"
+        size_hint_y: 1
+
+        pos_hint: {"top": 1}
+
+        MDTopAppBar:
+            type:"small"
+            theme_bg_color:"Custom"
+
+            md_bg_color:hex_color('#143b5c')
+            pos_hint:{'top':1}
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon:'arrow-left'
+                    theme_font_size: 'Custom'
+                    font_size:'20dp'
+                    size_hint:None, None
+                    size:"35dp", "35dp"
+                    theme_text_color:'Custom'
+                    text_color:hex_color('#3aa4a4')
+                    on_release:root.go_back()
+
+            MDTopAppBarTitle:
+                text:'Settings'
+                style:'display'
+                role:'large'
+                theme_text_color:"Custom"
+                text_color:hex_color('#ffffff')
+                pos_hint: {"center_x": 0.5, "center_y":0.5}
+                bold:True
+                theme_font_name:'Custom'
+                font_name: "fonts/Poppins-bold.ttf"
+
+
+        MDBoxLayout:
+            size_hint_x: 1
+            size_hint_y: 1
+            orientation: "vertical"
+            md_bg_color: hex_color('#ffffff')
+            radius: dp(15)
+            theme_line_color:"Custom"
+            line_color_focus: hex_color('#3aa4a4')
+            line_color_normal: hex_color('#fc4343')
+
+            MDList:
+                size_hint_x: 1
+                size_hint_y: 1
+                md_bg_color: hex_color('#ffffff')
+                spacing:dp(10)
+                padding:dp(5)
+
+                MDLabel:
+                    text: "Currency"
+                    font_style: 'Title'
+                    role: 'small'
+                    bold: True
+                    halign: "left"
+                    valign: "top"
+                    padding:dp(5), dp(5)
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    theme_text_color: "Custom"
+                    text_color: hex_color('#2a2a2d')
+                    theme_font_name: "Custom"
+                    font_name: "fonts/Poppins-Bold.ttf"
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(48)
+                    spacing: dp(5)
+
+                    MDTextField:
+                        id: category_field
+                        text:"$"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        size_hint_x: 1
+                        role: 'medium'
+                        mode: "outlined"
+                        readonly: True
+                        radius: [dp(10)]
+                        theme_text_color: "Custom"
+                        text_color_focus: hex_color('#4c4f52')
+                        theme_bg_color: "Custom"
+                        theme_line_color: "Custom"
+                        line_color_focus: hex_color('#777e84')
+                        line_color_normal: hex_color('#777e84')
+                        theme_cursor_color: "Custom"
+
+                        theme_font_name: "Custom"
+                        font_name: "fonts/Poppins-Medium.ttf"
+
+                        MDTextFieldTrailingIcon:
+                            icon: "chevron-down"
+
+                        MDLabel:
+                            text: "Currency"
+                            font_style: 'Title'
+                            role: 'small'
+                            bold: True
+                            halign: "left"
+                            valign: "top"
+                            padding:dp(5), dp(5)
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                            theme_text_color: "Custom"
+                            text_color: hex_color('#2a2a2d')
+                            theme_font_name: "Custom"
+                            font_name: "fonts/Poppins-Bold.ttf"
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: dp(70)
+            padding: dp(5)
+            spacing: dp(5)
+            md_bg_color: hex_color("#ffffff")
+            MDLabel:
+                text: "Nexapy Technologies"
+                halign: "center"
+                font_style: 'Title'
+                role: 'medium'
+                bold: True
+
+                pos_hint:{'center_x':0.5, 'center_y':0.5}
+                size_hint_y: None
+                height: self.texture_size[1]
+                theme_text_color: "Custom"
+                text_color: hex_color('#3576a7')
+                theme_font_name: "Custom"
+                font_name: "fonts/Poppins-Bold.ttf"
+
+            MDLabel:
+                allow_selection: True
+                allow_copy: True
+                on_copy: print("The text is copied to the clipboard")
+                text: "developer@nexapytechnologies.com"
+                halign: "center"
+                font_style: 'Title'
+                role: 'small'
+                bold: True
+                pos_hint:{'center_x':0.5, 'center_y':0.5}
+                size_hint_y: None
+                height: self.texture_size[1]
+                theme_text_color: "Custom"
+                text_color: hex_color('#3576a7')
+                theme_font_name: "Custom"
+                font_name: "fonts/Poppins-light.ttf"
